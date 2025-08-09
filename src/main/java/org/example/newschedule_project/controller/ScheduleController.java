@@ -17,16 +17,19 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     // 일정 저장
-    @PostMapping("/schedules")
+    @PostMapping("/users/{userId}/schedules")
     public ResponseEntity<ScheduleResponse> saveSchedule(
+            @PathVariable Long userId,
             @RequestBody ScheduleSaveRequest scheduleSaveRequest
     ) {
-        return ResponseEntity.ok(this.scheduleService.saveSchedule(scheduleSaveRequest));
+        return ResponseEntity.ok(this.scheduleService.saveSchedule(userId, scheduleSaveRequest));
     }
     // 전체 조회
-    @GetMapping("/schedules")
-    public ResponseEntity<List<ScheduleResponse>> findSchedules() {
-        return ResponseEntity.ok(this.scheduleService.findSchedules());
+    @GetMapping("/users/{userId}/schedules")
+    public ResponseEntity<List<ScheduleResponse>> findSchedules(
+            @PathVariable Long userId
+    ) {
+        return ResponseEntity.ok(this.scheduleService.findSchedules(userId));
     }
     // 단건 조회
     @GetMapping("/schedules/{scheduleId}")

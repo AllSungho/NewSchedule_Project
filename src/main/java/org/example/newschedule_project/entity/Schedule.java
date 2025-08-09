@@ -1,9 +1,6 @@
 package org.example.newschedule_project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.newschedule_project.scheduledto.ScheduleUpdateRequest;
@@ -19,10 +16,15 @@ public class Schedule extends BaseEntity {
     private String title;
     private String content;
 
-    public Schedule(String name, String title, String content) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    public Schedule(String name, String title, String content, User user) {
         this.name = name;
         this.title = title;
         this.content = content;
+        this.user = user;
     }
     public void updateInfo(ScheduleUpdateRequest scheduleUpdateRequest) {
         this.name = scheduleUpdateRequest.getName();
