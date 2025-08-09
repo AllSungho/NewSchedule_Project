@@ -13,14 +13,14 @@ public class ScheduleResponse {
     private final String title;
     private final String content;
     private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
+    private final LocalDateTime modifiedAt;
 
-    public ScheduleResponse(Schedule schedule, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public ScheduleResponse(Schedule schedule) {
         this.id = schedule.getId();
         this.name = schedule.getName();
         this.title = schedule.getTitle();
         this.content = schedule.getContent();
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = schedule.getCreatedAt();
+        this.modifiedAt = schedule.getModifiedAt();
     }
 }
