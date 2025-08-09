@@ -21,7 +21,7 @@ public class UserService {
     // 저장
     @Transactional
     public UserResponse save(UserSaveRequest userSaveRequest) {
-        User user = this.userRepository.save(new User(userSaveRequest.getName(), userSaveRequest.getEmail()));
+        User user = this.userRepository.save(new User(userSaveRequest.getName(), userSaveRequest.getEmail(), userSaveRequest.getPassword()));
         return new UserResponse(user);
     }
     // 전체 조회

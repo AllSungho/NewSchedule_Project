@@ -7,4 +7,5 @@ public class UserUpdateReqeust {
 
     private String name;
     private String email;
+    private String password;
 }
