@@ -3,7 +3,7 @@ package org.example.newschedule_project.scheduledto;
 import lombok.Getter;
 
 @Getter
-public class ScheduleChangeRequest {
+public class ScheduleUpdateRequest {
 
     private String name;
     private String title;

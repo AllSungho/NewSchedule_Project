@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.newschedule_project.scheduledto.ScheduleUpdateRequest;
 
 @Entity
 @Getter
@@ -22,5 +23,10 @@ public class Schedule extends BaseEntity {
         this.name = name;
         this.title = title;
         this.content = content;
+    }
+    public void updateInfo(ScheduleUpdateRequest scheduleUpdateRequest) {
+        this.name = scheduleUpdateRequest.getName();
+        this.title = scheduleUpdateRequest.getTitle();
+        this.content = scheduleUpdateRequest.getContent();
     }
 }
