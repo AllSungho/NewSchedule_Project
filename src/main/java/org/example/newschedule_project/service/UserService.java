@@ -1,9 +1,59 @@
 package org.example.newschedule_project.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.newschedule_project.entity.User;
+import org.example.newschedule_project.repository.UserRepository;
+import org.example.newschedule_project.userdto.UserResponse;
+import org.example.newschedule_project.userdto.UserSaveRequest;
+import org.example.newschedule_project.userdto.UserUpdateReqeust;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
+    private final UserRepository userRepository;
+
+    // 저장
+    @Transactional
+    public UserResponse save(UserSaveRequest userSaveRequest) {
+        User user = this.userRepository.save(new User(userSaveRequest.getName(), userSaveRequest.getEmail()));
+        return new UserResponse(user);
+    }
+    // 전체 조회
+    @Transactional(readOnly = true)
+    public List<UserResponse> findUsers() {
+        List<User> users = this.userRepository.findAll();
+        return users.stream().map(UserResponse::new).toList();
+    }
+    // 단건 조회
+    @Transactional(readOnly = true)
+    public UserResponse findUserById(Long id) {
+        User user = this.userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
+        );
+        return new UserResponse(user);
+    }
+    // 수정
+    @Transactional
+    public UserResponse update(Long id, UserUpdateReqeust userUpdateRequest) {
+        User user = this.userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
+        );
+        // 전체 수정
+        user.updateInfo(userUpdateRequest);
+        return new UserResponse(user);
+    }
+    // 삭제
+    @Transactional
+    public void deleteUserById(Long id) {
+        User user = this.userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
+        );
+        this.userRepository.delete(user);
+    }
 }

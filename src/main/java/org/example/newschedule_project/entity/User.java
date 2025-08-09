@@ -23,7 +23,7 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    public void update(UserUpdateReqeust userUpdateReqeust) {
+    public void updateInfo(UserUpdateReqeust userUpdateReqeust) {
         this.name = userUpdateReqeust.getName();
         this.email = userUpdateReqeust.getEmail();
     }
