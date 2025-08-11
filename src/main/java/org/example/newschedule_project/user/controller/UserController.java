@@ -2,9 +2,9 @@ package org.example.newschedule_project.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.user.service.UserService;
-import org.example.newschedule_project.user.userdto.UserResponse;
-import org.example.newschedule_project.user.userdto.UserSaveRequest;
-import org.example.newschedule_project.user.userdto.UserUpdateReqeust;
+import org.example.newschedule_project.user.dto.UserResponse;
+import org.example.newschedule_project.user.dto.UserSaveRequest;
+import org.example.newschedule_project.user.dto.UserUpdateReqeust;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

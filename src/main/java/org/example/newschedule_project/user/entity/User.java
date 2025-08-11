@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.newschedule_project.BaseEntity;
-import org.example.newschedule_project.user.userdto.UserUpdateReqeust;
+import org.example.newschedule_project.user.dto.UserUpdateReqeust;
 
 @Entity
 @Getter

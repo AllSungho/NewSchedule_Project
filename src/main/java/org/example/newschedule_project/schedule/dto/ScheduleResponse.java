@@ -1,4 +1,4 @@
-package org.example.newschedule_project.schedule.scheduledto;
+package org.example.newschedule_project.schedule.dto;
 
 import lombok.Getter;
 import org.example.newschedule_project.schedule.entity.Schedule;

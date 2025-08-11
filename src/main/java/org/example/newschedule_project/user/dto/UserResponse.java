@@ -1,4 +1,4 @@
-package org.example.newschedule_project.user.userdto;
+package org.example.newschedule_project.user.dto;
 
 import lombok.Getter;
 import org.example.newschedule_project.user.entity.User;

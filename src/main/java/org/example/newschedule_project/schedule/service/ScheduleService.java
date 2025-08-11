@@ -5,9 +5,9 @@ import org.example.newschedule_project.schedule.entity.Schedule;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.schedule.repository.ScheduleRepository;
 import org.example.newschedule_project.user.repository.UserRepository;
-import org.example.newschedule_project.schedule.scheduledto.ScheduleResponse;
-import org.example.newschedule_project.schedule.scheduledto.ScheduleSaveRequest;
-import org.example.newschedule_project.schedule.scheduledto.ScheduleUpdateRequest;
+import org.example.newschedule_project.schedule.dto.ScheduleResponse;
+import org.example.newschedule_project.schedule.dto.ScheduleSaveRequest;
+import org.example.newschedule_project.schedule.dto.ScheduleUpdateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

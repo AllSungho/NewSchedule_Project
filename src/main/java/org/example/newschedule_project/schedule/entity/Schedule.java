@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.newschedule_project.BaseEntity;
-import org.example.newschedule_project.schedule.scheduledto.ScheduleUpdateRequest;
+import org.example.newschedule_project.schedule.dto.ScheduleUpdateRequest;
 import org.example.newschedule_project.user.entity.User;
 
 @Entity
