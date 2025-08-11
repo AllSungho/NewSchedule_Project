@@ -3,7 +3,6 @@ package org.example.newschedule_project.user.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.user.service.UserService;
 import org.example.newschedule_project.user.dto.UserResponse;
-import org.example.newschedule_project.user.dto.UserSaveRequest;
 import org.example.newschedule_project.user.dto.UserUpdateReqeust;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +15,6 @@ public class UserController {
 
     private final UserService userService;
 
-    // 저장
-    @PostMapping("/users")
-    public ResponseEntity<UserResponse> save(
-            @RequestBody UserSaveRequest userSaveRequest
-    ) {
-        return  ResponseEntity.ok(userService.save(userSaveRequest));
-    }
     // 전체 조회
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> findUsers() {

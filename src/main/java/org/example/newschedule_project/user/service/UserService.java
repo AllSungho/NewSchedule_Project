@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.user.repository.UserRepository;
 import org.example.newschedule_project.user.dto.UserResponse;
-import org.example.newschedule_project.user.dto.UserSaveRequest;
 import org.example.newschedule_project.user.dto.UserUpdateReqeust;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +16,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    // 저장
-    @Transactional
-    public UserResponse save(UserSaveRequest userSaveRequest) {
-        User user = this.userRepository.save(new User(userSaveRequest.getName(), userSaveRequest.getEmail(), userSaveRequest.getPassword()));
-        return new UserResponse(user);
-    }
     // 전체 조회
     @Transactional(readOnly = true)
     public List<UserResponse> findUsers() {
