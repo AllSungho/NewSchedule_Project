@@ -12,7 +12,7 @@ import java.io.IOException;
 @Slf4j
 public class LoginFilter implements Filter {
 
-    private static final String[] WHITE_LIST = {"/", "/user/signup", "/login"};
+    private static final String[] WHITE_LIST = {"/", "/signups", "/logins"};
 
     @Override
     public void doFilter(
@@ -28,7 +28,7 @@ public class LoginFilter implements Filter {
         if(!isWhiteList(requestURI)) {
             HttpSession session = httpRequest.getSession(false);
 
-            if(session == null || session.getAttribute("sessionKey value") == null) {
+            if(session == null || session.getAttribute("LOGIN_SECRETE") == null) {
                 throw new RuntimeException("로그인 해주십셔");
             }
         }
