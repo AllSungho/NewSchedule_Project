@@ -7,6 +7,7 @@ import org.example.newschedule_project.login.dto.LoginRequest;
 import org.example.newschedule_project.login.dto.LoginResponse;
 import org.example.newschedule_project.login.dto.SignUpRequest;
 import org.example.newschedule_project.login.service.LoginService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,9 @@ public class LoginController {
     ) {
         // 쿠키 세션을 발급
         LoginResponse loginResponse = loginService.login(loginRequest);
+        if(loginResponse == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
         // 신규 세션 생성
         HttpSession session = request.getSession();
         session.setAttribute("LOGIN_SECRETE", loginResponse.getId());

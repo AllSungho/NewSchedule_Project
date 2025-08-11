@@ -9,6 +9,9 @@ import org.example.newschedule_project.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class LoginService {
@@ -30,11 +33,15 @@ public class LoginService {
     // 로그인
     @Transactional
     public LoginResponse login(LoginRequest loginRequest) {
-        User user = this.userRepository.findUserByEmail(loginRequest.getEmail()).orElseThrow(
-                () -> new IllegalArgumentException("존재하는 이메일이 없습니다.")
-        );
+        User user;
+        try {
+            user = this.userRepository.findUserByEmail(loginRequest.getEmail()).get();
+
+        } catch (NoSuchElementException e) {
+            return null;
+        }
         if(!user.getPassword().equals(loginRequest.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+            return null;
         }
         return new LoginResponse(user);
     }
