@@ -1,4 +1,4 @@
-package org.example.newschedule_project.userdto;
+package org.example.newschedule_project.user.userdto;
 
 import lombok.Getter;
 

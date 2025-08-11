@@ -1,13 +1,13 @@
-package org.example.newschedule_project.service;
+package org.example.newschedule_project.schedule.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.newschedule_project.entity.Schedule;
-import org.example.newschedule_project.entity.User;
-import org.example.newschedule_project.repository.ScheduleRepository;
-import org.example.newschedule_project.repository.UserRepository;
-import org.example.newschedule_project.scheduledto.ScheduleResponse;
-import org.example.newschedule_project.scheduledto.ScheduleSaveRequest;
-import org.example.newschedule_project.scheduledto.ScheduleUpdateRequest;
+import org.example.newschedule_project.schedule.entity.Schedule;
+import org.example.newschedule_project.user.entity.User;
+import org.example.newschedule_project.schedule.repository.ScheduleRepository;
+import org.example.newschedule_project.user.repository.UserRepository;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleResponse;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleSaveRequest;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleUpdateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

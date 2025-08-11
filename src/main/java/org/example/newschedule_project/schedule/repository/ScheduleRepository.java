@@ -1,7 +1,7 @@
-package org.example.newschedule_project.repository;
+package org.example.newschedule_project.schedule.repository;
 
-import org.example.newschedule_project.entity.Schedule;
-import org.example.newschedule_project.entity.User;
+import org.example.newschedule_project.schedule.entity.Schedule;
+import org.example.newschedule_project.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

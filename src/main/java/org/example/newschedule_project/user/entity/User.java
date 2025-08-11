@@ -1,4 +1,4 @@
-package org.example.newschedule_project.entity;
+package org.example.newschedule_project.user.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.newschedule_project.userdto.UserUpdateReqeust;
+import org.example.newschedule_project.BaseEntity;
+import org.example.newschedule_project.user.userdto.UserUpdateReqeust;
 
 @Entity
 @Getter

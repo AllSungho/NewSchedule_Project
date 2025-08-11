@@ -1,7 +1,7 @@
-package org.example.newschedule_project.userdto;
+package org.example.newschedule_project.user.userdto;
 
 import lombok.Getter;
-import org.example.newschedule_project.entity.User;
+import org.example.newschedule_project.user.entity.User;
 
 import java.time.LocalDateTime;
 

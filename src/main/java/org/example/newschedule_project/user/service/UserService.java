@@ -1,16 +1,15 @@
-package org.example.newschedule_project.service;
+package org.example.newschedule_project.user.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.newschedule_project.entity.User;
-import org.example.newschedule_project.repository.UserRepository;
-import org.example.newschedule_project.userdto.UserResponse;
-import org.example.newschedule_project.userdto.UserSaveRequest;
-import org.example.newschedule_project.userdto.UserUpdateReqeust;
+import org.example.newschedule_project.user.entity.User;
+import org.example.newschedule_project.user.repository.UserRepository;
+import org.example.newschedule_project.user.userdto.UserResponse;
+import org.example.newschedule_project.user.userdto.UserSaveRequest;
+import org.example.newschedule_project.user.userdto.UserUpdateReqeust;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

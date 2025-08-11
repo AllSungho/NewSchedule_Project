@@ -1,9 +1,9 @@
-package org.example.newschedule_project.scheduledto;
+package org.example.newschedule_project.schedule.scheduledto;
 
 import lombok.Getter;
 
 @Getter
-public class ScheduleSaveRequest {
+public class ScheduleUpdateRequest {
 
     private String name;
     private String title;

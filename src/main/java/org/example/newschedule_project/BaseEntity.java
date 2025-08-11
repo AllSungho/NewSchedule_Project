@@ -1,4 +1,4 @@
-package org.example.newschedule_project.entity;
+package org.example.newschedule_project;
 
 import jakarta.persistence.*;
 import lombok.Getter;

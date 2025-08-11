@@ -1,10 +1,10 @@
-package org.example.newschedule_project.controller;
+package org.example.newschedule_project.schedule.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.newschedule_project.scheduledto.ScheduleResponse;
-import org.example.newschedule_project.scheduledto.ScheduleSaveRequest;
-import org.example.newschedule_project.scheduledto.ScheduleUpdateRequest;
-import org.example.newschedule_project.service.ScheduleService;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleResponse;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleSaveRequest;
+import org.example.newschedule_project.schedule.scheduledto.ScheduleUpdateRequest;
+import org.example.newschedule_project.schedule.service.ScheduleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

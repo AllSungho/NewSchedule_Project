@@ -1,13 +1,12 @@
-package org.example.newschedule_project.config;
+package org.example.newschedule_project.filter;
 
 import jakarta.servlet.Filter;
-import org.example.newschedule_project.filter.LoginFilter;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 @Configurable
-public class WebConfig {
+public class FilterConfig {
 
     @Bean
     public FilterRegistrationBean loginFilter() {

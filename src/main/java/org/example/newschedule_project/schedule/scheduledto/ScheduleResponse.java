@@ -1,7 +1,7 @@
-package org.example.newschedule_project.scheduledto;
+package org.example.newschedule_project.schedule.scheduledto;
 
 import lombok.Getter;
-import org.example.newschedule_project.entity.Schedule;
+import org.example.newschedule_project.schedule.entity.Schedule;
 
 import java.time.LocalDateTime;
 
