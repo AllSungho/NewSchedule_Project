@@ -32,23 +32,26 @@ public class ScheduleController {
         return ResponseEntity.ok(this.scheduleService.findSchedules(userId));
     }
     // 단건 조회
-    @GetMapping("/schedules/{scheduleId}")
+    @GetMapping("/users/{userId}/schedules/{scheduleId}")
     public ResponseEntity<ScheduleResponse> findScheduleById(
+            @PathVariable Long userId,
             @PathVariable Long scheduleId
     ) {
         return ResponseEntity.ok(this.scheduleService.findScheduleById(scheduleId));
     }
     // 수정
-    @PutMapping("/schedules/{scheduleId}")
+    @PutMapping("/users/{userId}/schedules/{scheduleId}")
     public ResponseEntity<ScheduleResponse> update(
+            @PathVariable Long userId,
             @PathVariable Long scheduleId,
             @RequestBody ScheduleUpdateRequest scheduleUpdateRequest
     ) {
         return ResponseEntity.ok(this.scheduleService.update(scheduleId, scheduleUpdateRequest));
     }
     // 삭제
-    @DeleteMapping("/schedules/{scheduleId}")
+    @DeleteMapping("/users/{userId}/schedules/{scheduleId}")
     public void deleteScheduleById(
+            @PathVariable Long userId,
             @PathVariable Long scheduleId
     ) {
         this.scheduleService.deleteScheduleById(scheduleId);
