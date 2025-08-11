@@ -33,7 +33,7 @@ public class LoginService {
         User user = this.userRepository.findUserByEmail(loginRequest.getEmail()).orElseThrow(
                 () -> new IllegalArgumentException("존재하는 이메일이 없습니다.")
         );
-        if(user.getPassword().equals(loginRequest.getPassword())) {
+        if(!user.getPassword().equals(loginRequest.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
         return new LoginResponse(user);
