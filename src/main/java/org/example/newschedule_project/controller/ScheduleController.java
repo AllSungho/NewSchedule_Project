@@ -24,7 +24,7 @@ public class ScheduleController {
     ) {
         return ResponseEntity.ok(this.scheduleService.saveSchedule(userId, scheduleSaveRequest));
     }
-    // 전체 조회
+    // 한 유저가 작성한 스케줄 전체 조회
     @GetMapping("/users/{userId}/schedules")
     public ResponseEntity<List<ScheduleResponse>> findSchedules(
             @PathVariable Long userId
@@ -37,7 +37,7 @@ public class ScheduleController {
             @PathVariable Long userId,
             @PathVariable Long scheduleId
     ) {
-        return ResponseEntity.ok(this.scheduleService.findScheduleById(scheduleId));
+        return ResponseEntity.ok(this.scheduleService.findScheduleById(userId, scheduleId));
     }
     // 수정
     @PutMapping("/users/{userId}/schedules/{scheduleId}")
@@ -46,7 +46,7 @@ public class ScheduleController {
             @PathVariable Long scheduleId,
             @RequestBody ScheduleUpdateRequest scheduleUpdateRequest
     ) {
-        return ResponseEntity.ok(this.scheduleService.update(scheduleId, scheduleUpdateRequest));
+        return ResponseEntity.ok(this.scheduleService.update(userId, scheduleId, scheduleUpdateRequest));
     }
     // 삭제
     @DeleteMapping("/users/{userId}/schedules/{scheduleId}")
@@ -54,6 +54,6 @@ public class ScheduleController {
             @PathVariable Long userId,
             @PathVariable Long scheduleId
     ) {
-        this.scheduleService.deleteScheduleById(scheduleId);
+        this.scheduleService.deleteScheduleById(userId, scheduleId);
     }
 }
