@@ -130,7 +130,7 @@
 ```
 
 ### 스케줄 삭제
-* PUT /users/{userId}/schedules/{scheduleId}
+* DELETE /users/{userId}/schedules/{scheduleId}
 * 스케줄 삭제 API
 
 # ERD
