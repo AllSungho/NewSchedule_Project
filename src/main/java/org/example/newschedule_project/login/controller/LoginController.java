@@ -2,6 +2,7 @@ package org.example.newschedule_project.login.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.login.dto.LoginRequest;
 import org.example.newschedule_project.login.dto.LoginResponse;
@@ -22,7 +23,7 @@ public class LoginController {
     // 회원가입
     @PostMapping("/signups")
     public ResponseEntity<LoginResponse> signup(
-            @RequestBody SignUpRequest signUpRequest
+            @Valid @RequestBody SignUpRequest signUpRequest
             ) {
         return ResponseEntity.ok(loginService.signUp(signUpRequest));
     }
