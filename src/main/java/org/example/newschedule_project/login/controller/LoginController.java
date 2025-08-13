@@ -30,7 +30,7 @@ public class LoginController {
     // 로그인
     @PostMapping("/logins")
     public ResponseEntity<LoginResponse> login(
-            @RequestBody LoginRequest loginRequest,
+            @Valid @RequestBody LoginRequest loginRequest,
             HttpServletRequest request
     ) {
         // 쿠키 세션을 발급

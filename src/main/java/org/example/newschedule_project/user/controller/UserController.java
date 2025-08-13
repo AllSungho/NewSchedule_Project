@@ -1,5 +1,6 @@
 package org.example.newschedule_project.user.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.user.service.UserService;
 import org.example.newschedule_project.user.dto.UserResponse;
@@ -31,7 +32,7 @@ public class UserController {
     @PutMapping("/users/{userId}")
     public ResponseEntity<UserResponse> update(
             @PathVariable Long userId,
-            @RequestBody UserUpdateReqeust userUpdateRequest
+            @Valid @RequestBody UserUpdateReqeust userUpdateRequest
     ) {
         return ResponseEntity.ok(userService.update(userId, userUpdateRequest));
     }

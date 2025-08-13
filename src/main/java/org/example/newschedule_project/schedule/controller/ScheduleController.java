@@ -1,5 +1,6 @@
 package org.example.newschedule_project.schedule.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.schedule.dto.ScheduleResponse;
 import org.example.newschedule_project.schedule.dto.ScheduleSaveRequest;
@@ -20,7 +21,7 @@ public class ScheduleController {
     @PostMapping("/users/{userId}/schedules")
     public ResponseEntity<ScheduleResponse> saveSchedule(
             @PathVariable Long userId,
-            @RequestBody ScheduleSaveRequest scheduleSaveRequest
+            @Valid @RequestBody ScheduleSaveRequest scheduleSaveRequest
     ) {
         return ResponseEntity.ok(this.scheduleService.saveSchedule(userId, scheduleSaveRequest));
     }
@@ -44,7 +45,7 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponse> update(
             @PathVariable Long userId,
             @PathVariable Long scheduleId,
-            @RequestBody ScheduleUpdateRequest scheduleUpdateRequest
+            @Valid @RequestBody ScheduleUpdateRequest scheduleUpdateRequest
     ) {
         return ResponseEntity.ok(this.scheduleService.update(userId, scheduleId, scheduleUpdateRequest));
     }
