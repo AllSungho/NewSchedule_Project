@@ -34,7 +34,9 @@ public class LoginController {
     ) {
         // 쿠키 세션을 발급
         LoginResponse loginResponse = loginService.login(loginRequest);
+        // 로그인 정보가 틀릴 시
         if(loginResponse == null) {
+            // 401 상태 코드 반환
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         // 신규 세션 생성

@@ -35,11 +35,12 @@ public class LoginService {
     public LoginResponse login(LoginRequest loginRequest) {
         User user;
         try {
+            // 로그인 시도 중 해당 이메일이 있는지를 확인
             user = this.userRepository.findUserByEmail(loginRequest.getEmail()).get();
-
         } catch (NoSuchElementException e) {
             return null;
         }
+        // 로그인 시도 중 저장된 비밀번호가 일치한지를 확인
         if(!user.getPassword().equals(loginRequest.getPassword())) {
             return null;
         }
