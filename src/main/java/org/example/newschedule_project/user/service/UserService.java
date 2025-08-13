@@ -1,7 +1,10 @@
 package org.example.newschedule_project.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.newschedule_project.comment.repository.CommentRepository;
 import org.example.newschedule_project.password.PasswordEncoder;
+import org.example.newschedule_project.schedule.entity.Schedule;
+import org.example.newschedule_project.schedule.repository.ScheduleRepository;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.user.repository.UserRepository;
 import org.example.newschedule_project.user.dto.UserResponse;
@@ -16,6 +19,8 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final ScheduleRepository scheduleRepository;
+    private final CommentRepository commentRepository;
     private final PasswordEncoder passwordEncoder;
 
     // 전체 조회
@@ -48,6 +53,13 @@ public class UserService {
         User user = this.userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
         );
+        // 이 유저가 생성한 스케줄과 댓글 삭제
+        List<Schedule> schedules = this.scheduleRepository.findByUser(user);
+        for (Schedule schedule : schedules) {
+            this.commentRepository.deleteAllBySchedule(schedule);
+        }
+        this.scheduleRepository.deleteAllByUser(user);
+
         this.userRepository.delete(user);
     }
 }

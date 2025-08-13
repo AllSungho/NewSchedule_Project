@@ -1,6 +1,7 @@
 package org.example.newschedule_project.schedule.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.newschedule_project.comment.repository.CommentRepository;
 import org.example.newschedule_project.schedule.entity.Schedule;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.schedule.repository.ScheduleRepository;
@@ -19,6 +20,7 @@ public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
 
     private User findUser(Long userId) {
         return this.userRepository.findById(userId).orElseThrow(
@@ -86,6 +88,7 @@ public class ScheduleService {
                 .orElseThrow(
                         () -> new IllegalArgumentException("그런 스케줄 아이디는 없습니다.")
                 );
+        this.commentRepository.deleteAllBySchedule(schedule);
         this.scheduleRepository.delete(schedule);
     }
 }

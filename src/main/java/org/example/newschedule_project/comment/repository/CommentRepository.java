@@ -11,4 +11,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findAllByUserAndSchedule(User user, Schedule schedule);
     List<Comment> findAllByUser(User user);
+
+    void deleteAllBySchedule(Schedule schedule);
 }

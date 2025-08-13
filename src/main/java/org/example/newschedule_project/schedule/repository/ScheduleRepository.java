@@ -12,4 +12,8 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     Schedule findScheduleByUser(User user);
 
     List<Schedule> findSchedulesByUser(User user);
+
+    List<Schedule> findByUser(User user);
+
+    void deleteAllByUser(User user);
 }
