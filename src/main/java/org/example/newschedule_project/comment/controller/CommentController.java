@@ -42,23 +42,29 @@ public class CommentController {
     // 댓글 단건 조회
     @GetMapping("/comments/{commentId}")
     public ResponseEntity<CommentResponse> findById(
-            @PathVariable Long commentId
+            @PathVariable Long commentId,
+            HttpServletRequest request
     ) {
-        return ResponseEntity.ok(this.commentService.findById(commentId));
+        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        return ResponseEntity.ok(this.commentService.findById(userId, commentId));
     }
     // 댓글 수정
     @PutMapping("/comments/{commentId}")
     public ResponseEntity<CommentResponse> update(
             @PathVariable Long commentId,
-            @RequestBody CommentUpdateRequest commentUpdateRequest
+            @RequestBody CommentUpdateRequest commentUpdateRequest,
+            HttpServletRequest request
     ) {
-        return ResponseEntity.ok(this.commentService.update(commentId, commentUpdateRequest));
+        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        return ResponseEntity.ok(this.commentService.update(userId, commentId, commentUpdateRequest));
     }
     // 댓글 삭제
     @DeleteMapping("/comments/{commentId}")
     public void deleteById(
-            @PathVariable Long commentId
+            @PathVariable Long commentId,
+            HttpServletRequest request
     ) {
-        this.commentService.deleteById(commentId);
+        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        this.commentService.deleteById(userId, commentId);
     }
 }

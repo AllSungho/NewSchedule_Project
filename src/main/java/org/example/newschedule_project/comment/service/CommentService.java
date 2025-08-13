@@ -58,27 +58,36 @@ public class CommentService {
     }
     // 내가 작성한 댓글 단건 조회
     @Transactional(readOnly = true)
-    public CommentResponse findById(Long commentId) {
+    public CommentResponse findById(Long userId, Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 댓글입니다.")
         );
+        if(!comment.getId().equals(userId)){
+            throw new IllegalArgumentException("당신이 작성한 댓글이 아닙니다.");
+        }
         return new CommentResponse(comment);
     }
     // 댓글 수정
     @Transactional
-    public CommentResponse update(Long commentId, CommentUpdateRequest updateRequest) {
+    public CommentResponse update(Long userId, Long commentId, CommentUpdateRequest updateRequest) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 댓글입니다.")
         );
+        if(!comment.getId().equals(userId)){
+            throw new IllegalArgumentException("당신이 작성한 댓글이 아닙니다.");
+        }
         comment.changeContent(updateRequest);
         return new CommentResponse(comment);
     }
     // 댓글 삭제
     @Transactional
-    public void deleteById(Long commentId) {
+    public void deleteById(Long userId, Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 댓글입니다.")
         );
+        if(!comment.getId().equals(userId)){
+            throw new IllegalArgumentException("당신이 작성한 댓글이 아닙니다.");
+        }
         commentRepository.delete(comment);
     }
 }
