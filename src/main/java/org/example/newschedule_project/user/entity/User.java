@@ -26,9 +26,9 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public void updateInfo(UserUpdateReqeust userUpdateReqeust) {
+    public void updateInfo(UserUpdateReqeust userUpdateReqeust, String password) {
         this.name = userUpdateReqeust.getName();
         this.email = userUpdateReqeust.getEmail();
-        this.password = userUpdateReqeust.getPassword();
+        this.password = password;
     }
 }

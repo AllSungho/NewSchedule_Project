@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.login.dto.LoginRequest;
 import org.example.newschedule_project.login.dto.LoginResponse;
 import org.example.newschedule_project.login.dto.SignUpRequest;
+import org.example.newschedule_project.password.PasswordEncoder;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class LoginService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // 회원가입
     @Transactional
@@ -25,7 +27,7 @@ public class LoginService {
                 new User(
                         signUpRequest.getName(),
                         signUpRequest.getEmail(),
-                        signUpRequest.getPassword()
+                        passwordEncoder.encoding(signUpRequest.getPassword())
                 )
         );
         return new LoginResponse(user);
@@ -41,7 +43,7 @@ public class LoginService {
             return null;
         }
         // 로그인 시도 중 저장된 비밀번호가 일치한지를 확인
-        if(!user.getPassword().equals(loginRequest.getPassword())) {
+        if(!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             return null;
         }
         return new LoginResponse(user);

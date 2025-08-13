@@ -1,6 +1,7 @@
 package org.example.newschedule_project.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.newschedule_project.password.PasswordEncoder;
 import org.example.newschedule_project.user.entity.User;
 import org.example.newschedule_project.user.repository.UserRepository;
 import org.example.newschedule_project.user.dto.UserResponse;
@@ -15,6 +16,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // 전체 조회
     @Transactional(readOnly = true)
@@ -37,7 +39,7 @@ public class UserService {
                 () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
         );
         // 전체 수정
-        user.updateInfo(userUpdateRequest);
+        user.updateInfo(userUpdateRequest, passwordEncoder.encoding(userUpdateRequest.getPassword()));
         return new UserResponse(user);
     }
     // 삭제
