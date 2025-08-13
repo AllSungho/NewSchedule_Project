@@ -1,6 +1,7 @@
 package org.example.newschedule_project.comment.dto;
 
 import lombok.Getter;
+import org.example.newschedule_project.comment.entity.Comment;
 
 import java.time.LocalDateTime;
 
@@ -12,10 +13,10 @@ public class CommentResponse {
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
-    public CommentResponse(Long id, String comment, LocalDateTime createdAt, LocalDateTime modifiedAt) {
-        this.id = id;
-        this.comment = comment;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+    public CommentResponse(Comment comment) {
+        this.id = comment.getId();
+        this.comment = comment.getContent();
+        this.createdAt = comment.getCreatedAt();
+        this.modifiedAt = comment.getModifiedAt();
     }
 }
