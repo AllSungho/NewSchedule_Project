@@ -32,7 +32,7 @@ public class CommentService {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 게시물입니다.")
         );
-        Comment comment = commentRepository.save(new Comment(createRequest.getComment(), user, schedule));
+        Comment comment = commentRepository.save(new Comment(createRequest.getContent(), user, schedule));
         return new CommentResponse(comment);
     }
     // 해당 스케줄 내에 내가 작성한 댓글 전체 조회.

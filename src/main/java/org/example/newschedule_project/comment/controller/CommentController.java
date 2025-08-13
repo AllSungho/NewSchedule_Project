@@ -1,6 +1,7 @@
 package org.example.newschedule_project.comment.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.newschedule_project.comment.dto.CommentCreateRequest;
 import org.example.newschedule_project.comment.dto.CommentResponse;
@@ -18,13 +19,14 @@ public class CommentController {
     private final CommentService commentService;
 
     // 댓글 생성
-    @PostMapping("/comments")
+    @PostMapping("/schedules/{scheduleId}/comments")
     public ResponseEntity<CommentResponse> create(
-            @RequestParam Long scheduleId,
+            @PathVariable Long scheduleId,
             @RequestBody CommentCreateRequest commentCreateRequest,
             HttpServletRequest request
     ) {
-        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("LOGIN_SECRETE"); // <- Null
         return ResponseEntity.ok(this.commentService.create(userId, scheduleId, commentCreateRequest));
     }
     // 전체 댓글 조회
@@ -33,7 +35,8 @@ public class CommentController {
             @RequestParam Long scheduleId,
             HttpServletRequest request
     ) {
-        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("LOGIN_SECRETE");
         if(scheduleId == null) {
             return ResponseEntity.ok(this.commentService.findAll(userId));
         }
@@ -45,7 +48,8 @@ public class CommentController {
             @PathVariable Long commentId,
             HttpServletRequest request
     ) {
-        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("LOGIN_SECRETE");
         return ResponseEntity.ok(this.commentService.findById(userId, commentId));
     }
     // 댓글 수정
@@ -55,7 +59,8 @@ public class CommentController {
             @RequestBody CommentUpdateRequest commentUpdateRequest,
             HttpServletRequest request
     ) {
-        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("LOGIN_SECRETE");
         return ResponseEntity.ok(this.commentService.update(userId, commentId, commentUpdateRequest));
     }
     // 댓글 삭제
@@ -64,7 +69,8 @@ public class CommentController {
             @PathVariable Long commentId,
             HttpServletRequest request
     ) {
-        Long userId = (Long) request.getAttribute("LOGIN_SECRETE");
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("LOGIN_SECRETE");
         this.commentService.deleteById(userId, commentId);
     }
 }

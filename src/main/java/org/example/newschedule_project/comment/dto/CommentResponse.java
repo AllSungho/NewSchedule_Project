@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 public class CommentResponse {
 
     private final Long id;
-    private final String comment;
+    private final String content;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
     public CommentResponse(Comment comment) {
         this.id = comment.getId();
-        this.comment = comment.getContent();
+        this.content = comment.getContent();
         this.createdAt = comment.getCreatedAt();
         this.modifiedAt = comment.getModifiedAt();
     }

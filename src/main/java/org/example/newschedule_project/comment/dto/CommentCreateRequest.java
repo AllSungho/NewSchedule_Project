@@ -5,5 +5,5 @@ import lombok.Getter;
 @Getter
 public class CommentCreateRequest {
 
-    private String comment;
+    private String content;
 }
