@@ -134,4 +134,4 @@
 * 스케줄 삭제 API
 
 # ERD
-https://www.erdcloud.com/d/gWMH6JkvWcTmqPMNo
+https://www.erdcloud.com/d/LCobLGyc84rmKZRYi
