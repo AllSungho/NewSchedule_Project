@@ -74,7 +74,7 @@
 * 유저 삭제 API
 
 ### 스케줄 저장
-* POST /users/{userId}/schedules
+* POST /schedules
 * 스케줄 저장 API
 * 요청 예시:
 ```json
@@ -86,7 +86,7 @@
 ```
 
 ### 스케줄 전체 조회
-* GET /users/{userId}/schedules
+* GET /schedules
 * 해당 유저의 스케줄 전체 조회 API
 * 응답 예시:
 ```json
@@ -103,7 +103,7 @@
 ```
 
 ### 스케줄 단건 조회
-* GET /users/{userId}/schedules/{scheduleId}
+* GET /schedules/{scheduleId}
 * 스케줄 단건 조회 API
 * 응답 예시:
 ```json
@@ -118,7 +118,7 @@
 ```
 
 ### 스케줄 수정
-* PUT /users/{userId}/schedules/{scheduleId}
+* PUT /schedules/{scheduleId}
 * 스케줄 수정 API
 * 요청 예시:
 ```json
@@ -130,7 +130,7 @@
 ```
 
 ### 스케줄 삭제
-* DELETE /users/{userId}/schedules/{scheduleId}
+* DELETE /schedules/{scheduleId}
 * 스케줄 삭제 API
 
 ### 댓글 생성
