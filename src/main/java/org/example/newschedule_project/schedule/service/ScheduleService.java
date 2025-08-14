@@ -28,7 +28,7 @@ public class ScheduleService {
         );
     }
 
-    // 저장
+    // 일정 저장
     @Transactional
     public ScheduleResponse saveSchedule(Long userId, ScheduleSaveRequest scheduleSaveRequest) {
         User user = findUser(userId);
@@ -42,14 +42,14 @@ public class ScheduleService {
         );
         return new ScheduleResponse(schedule);
     }
-    // 해당 유저 스케줄 전체 조회
+    // 해당 유저 일정 전체 조회
     @Transactional(readOnly = true)
     public List<ScheduleResponse> findSchedules(Long userId) {
         User user = findUser(userId);
         List<Schedule> schedules = this.scheduleRepository.findAllByUser(user);
         return schedules.stream().map(ScheduleResponse::new).toList();
     }
-    // 단건 조회
+    // 일정 단건 조회
     @Transactional(readOnly = true)
     public ScheduleResponse findScheduleById(Long userId, Long scheduleId) {
         User user = findUser(userId);
@@ -62,7 +62,7 @@ public class ScheduleService {
                 );
         return new ScheduleResponse(schedule);
     }
-    // 수정
+    // 일정 수정
     @Transactional
     public ScheduleResponse update(Long userId, Long scheduleId, ScheduleUpdateRequest scheduleUpdateRequest) {
         User user = findUser(userId);
@@ -73,11 +73,11 @@ public class ScheduleService {
                 .orElseThrow(
                         () -> new IllegalArgumentException("그런 스케줄 아이디는 없습니다.")
                 );
-        // 정보 수정
+        // 일정 정보 수정
         schedule.updateInfo(scheduleUpdateRequest);
         return new ScheduleResponse(schedule);
     }
-    // 삭제
+    // 일정 삭제
     @Transactional
     public void deleteScheduleById(Long userId, Long scheduleId) {
         User user = findUser(userId);

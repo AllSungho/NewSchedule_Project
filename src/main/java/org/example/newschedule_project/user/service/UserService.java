@@ -23,13 +23,13 @@ public class UserService {
     private final CommentRepository commentRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // 전체 조회
+    // 유저 전체 조회
     @Transactional(readOnly = true)
     public List<UserResponse> findUsers() {
         List<User> users = this.userRepository.findAll();
         return users.stream().map(UserResponse::new).toList();
     }
-    // 단건 조회
+    // 유저 단건 조회
     @Transactional(readOnly = true)
     public UserResponse findUserById(Long id) {
         User user = this.userRepository.findById(id).orElseThrow(
@@ -37,17 +37,17 @@ public class UserService {
         );
         return new UserResponse(user);
     }
-    // 수정
+    // 유저 수정
     @Transactional
     public UserResponse update(Long id, UserUpdateReqeust userUpdateRequest) {
         User user = this.userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 아이디입니다.")
         );
-        // 전체 수정
+        // 유저 전체 수정
         user.updateInfo(userUpdateRequest, passwordEncoder.encoding(userUpdateRequest.getPassword()));
         return new UserResponse(user);
     }
-    // 삭제
+    // 유저 삭제
     @Transactional
     public void deleteUserById(Long id) {
         User user = this.userRepository.findById(id).orElseThrow(

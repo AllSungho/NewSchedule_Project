@@ -16,19 +16,19 @@ public class UserController {
 
     private final UserService userService;
 
-    // 전체 조회
+    // 유저 전체 조회
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> findUsers() {
         return ResponseEntity.ok(userService.findUsers());
     }
-    // 단건 조회
+    // 유저 단건 조회
     @GetMapping("/users/{userId}")
     public ResponseEntity<UserResponse> findUserById(
             @PathVariable Long userId
     ) {
         return ResponseEntity.ok(userService.findUserById(userId));
     }
-    // 수정
+    // 유저 수정
     @PutMapping("/users/{userId}")
     public ResponseEntity<UserResponse> update(
             @PathVariable Long userId,
@@ -36,7 +36,7 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.update(userId, userUpdateRequest));
     }
-    // 삭제
+    // 유저 삭제
     @DeleteMapping("/users/{userId}")
     public void deleteUserById(
             @PathVariable Long userId
