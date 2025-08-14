@@ -133,5 +133,60 @@
 * DELETE /users/{userId}/schedules/{scheduleId}
 * 스케줄 삭제 API
 
+### 댓글 생성
+* POST /schedules/{scheduleId}/comments
+* 댓글 생성 API
+* 요청 예시:
+```json
+{
+    "content" : "내용 생성1"
+}
+```
+
+### 댓글 전체 조회
+* GET /comments?schedule={scheduleId}
+* 댓글 전체 조회 API
+* 응답 예시:
+```json
+[
+    {
+        "id": 1,
+        "content": "내용 생성1",
+        "createdAt": "2025-08-14T09:08:50.131095",
+        "modifiedAt": "2025-08-14T09:08:50.131095"
+    }
+]
+```
+
+### 댓글 단건 조회
+* GET /comments/{commentId}
+* 댓글 단건 조회 API
+* 응답 예시:
+```json
+{
+    "id": 1,
+    "content": "내용 생성1",
+    "createdAt": "2025-08-14T09:08:50.131095",
+    "modifiedAt": "2025-08-14T09:08:50.131095"
+}
+```
+
+### 댓글 수정
+* PUT /comments/{commentId}
+* 댓글 수정 API
+* 응답 예시:
+```json
+{
+    "id": 1,
+    "content": "내용 변경",
+    "createdAt": "2025-08-14T09:08:50.131095",
+    "modifiedAt": "2025-08-14T09:08:50.131095"
+}
+```
+
+### 댓글 삭제
+* DELETE /comments/{commentId}
+* 댓글 삭제 API
+
 # ERD
 https://www.erdcloud.com/d/LCobLGyc84rmKZRYi
